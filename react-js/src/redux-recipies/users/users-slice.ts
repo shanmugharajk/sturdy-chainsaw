@@ -9,9 +9,10 @@ export interface User {
   email: string;
 }
 
+export type Status = "idle" | "loading" | "failed";
 export interface UsersState {
   users: User[];
-  status: "idle" | "loading" | "failed";
+  status: Status;
 }
 
 const initialState: UsersState = {
@@ -23,8 +24,16 @@ export const usersSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
+    setStatus: (state, action: PayloadAction<Status>) => {
+      state.status = action.payload;
+    },
+    setError: (state) => {
+      state.status = "failed";
+      state.users = [];
+    },
     setUsers: (state, action: PayloadAction<User[]>) => {
       state.users = action.payload;
+      state.status = "idle";
     },
   },
 });
@@ -32,15 +41,18 @@ export const usersSlice = createSlice({
 // async action to fetch asll users data.
 export const fetchUsersData = (): AppThunk => async (dispatch) => {
   try {
+    dispatch({ type: "users/setStatus", payload: "loading" });
+
     const response = await fetchUsers();
     const { data: users } = response;
+
     dispatch({ type: "users/setUsers", payload: users });
   } catch (error) {
-    dispatch({ type: "users/setUsers", payload: [] });
+    dispatch({ type: "users/setError" });
   }
 };
 
 // selectors
-export const selectUsers = (state: RootState) => state.user.users;
+export const selectUserState = (state: RootState) => state.user;
 
 export default usersSlice.reducer;
