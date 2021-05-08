@@ -1,0 +1,21 @@
+{
+  "html snippet": {
+    "prefix": "html",
+    "body": [
+      "<head>",
+      "\t<title>JS Essentials</title>",
+      "\t<link href='https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css' rel='stylesheet'",
+      "\t<script src='https://unpkg.com/vue@next'></script>",
+      "</head>",
+      "<body>",
+      "\t<div id='app'></div>",
+      "<script src=\"${1}\"></script>",
+      "</body>"
+    ]
+  },
+  "js function": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "ff",
+    "body": ["function ${1:name}() {", "\t${2}", "}"]
+  }
+}
