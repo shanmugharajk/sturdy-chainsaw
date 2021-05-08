@@ -4,7 +4,7 @@
     "body": [
       "<head>",
       "\t<title>JS Essentials</title>",
-      "\t<link href='https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css' rel='stylesheet'",
+      "\t<link href='https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css' rel='stylesheet' />",
       "\t<script src='https://unpkg.com/vue@next'></script>",
       "</head>",
       "<body>",
