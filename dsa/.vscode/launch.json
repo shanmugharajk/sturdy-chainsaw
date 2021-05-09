@@ -20,7 +20,7 @@
       "env": {
         "PYTHONPATH": "src"
       },
-      "args": ["${fileBasenameNoExtension}"],
+      "args": ["${fileBasenameNoExtension}", "${relativeFileDirname}"],
       "request": "launch",
       "program": "src/.bin/run.py",
       "console": "internalConsole"
