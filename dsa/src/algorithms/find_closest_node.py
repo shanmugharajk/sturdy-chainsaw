@@ -1,7 +1,7 @@
-from algorithms.utils import BST, traverse
+from algorithms.trees import BT, traverse
 
 
-def find_closest_node(tree: BST, target: int):
+def find_closest_node(tree: BT, target: int):
     diff = abs(target - tree.value)
     closest = tree.value
     ptr = tree
@@ -17,7 +17,7 @@ def find_closest_node(tree: BST, target: int):
 
 
 def main():
-    tree = BST(100)
+    tree = BT(100)
     tree.insert(502)
     tree.insert(55000)
     tree.insert(1001)
@@ -43,7 +43,5 @@ def main():
     tree.insert(1)
     tree.insert(-51)
     tree.insert(-40)
-
-    traverse(tree)
 
     print(find_closest_node(tree, 30000))
