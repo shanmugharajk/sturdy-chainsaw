@@ -35,6 +35,7 @@ module.exports = {
 
   module: {
     rules: [
+      // For all components and ts files
       {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
@@ -43,6 +44,14 @@ module.exports = {
             loader: "babel-loader",
           },
         ],
+      },
+
+      // For css files
+      {
+        test: /\.css$/,
+        // style-loader injectss css into DOM.
+        // css-loader interprets @import and url() like import/require() and will resolve them
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
