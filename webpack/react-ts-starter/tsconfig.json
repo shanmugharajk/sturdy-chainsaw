@@ -1,22 +1,55 @@
 {
   "compilerOptions": {
+    // Build target Javascript version
     "target": "ES5",
-    "module": "ESNext",
-    "sourceMap": true,
+
+    // module resolution strategy
     "moduleResolution": "node",
+
+    // Helps to look typedefinitions
     "lib": ["DOM", "ESNext"],
+
+    // Specify what JSX code is generated.
+    // react-jsx produces o/p like this _jsx("div", {}, void 0);
+    // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
     "jsx": "react-jsx",
+
+    // Disable emitting file from a compilation. We leave it to babel to do that.
     "noEmit": true,
+
+    // Type re export can cause problems. This will warn us and avoid run time isses
+    // TODO: Check this behaviour
     "isolatedModules": true,
+
+    // Allow Synthetic Default Imports
+    // can write import React from "react"; instead of import * as React from "react";
     "esModuleInterop": true,
+
+    // Enable all strict type checking options.
     "strict": true,
+
+    // This avoids type checking on all .d.ts files if multiple copies are present.
+    // This happens two libraries could define two copies of the same
+    // type in an inconsistent way. Setting this to true will prevent it and
+    // check only the type of the code which we refer
     "skipLibCheck": true,
+
+    // Import fileManager.ts by specifying ./FileManager.ts the file will be found
+    // in a case-insensitive file system,  but not on a case-sensitive file system.
     "forceConsistentCasingInFileNames": true,
+
+    // Enable importing .json files
     "resolveJsonModule": true,
+
+    // Base directory of the project
     "baseUrl": ".",
+
+    // aliases map to look
     "paths": {
       "~/*": ["src/*"]
     }
   },
+
+  // Folders to include in compilation
   "include": ["src/**/*"]
 }

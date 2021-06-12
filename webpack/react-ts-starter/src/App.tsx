@@ -1,3 +1,3 @@
 export const App: React.FunctionComponent = () => {
-  return <div>App</div>;
+  return <div>App Component</div>;
 };
