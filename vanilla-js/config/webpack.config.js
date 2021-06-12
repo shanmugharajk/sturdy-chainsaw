@@ -13,7 +13,7 @@ const ifProd = (t, f) => (isProd() ? t : f);
 const context = path.resolve(__dirname, "..");
 const configFile = "tsconfig.json";
 const dist = path.resolve(__dirname, "./dist");
-const main = process.env.MAIN_ENTRY || "./src/index.tsx";
+const main = process.env.MAIN_ENTRY || "./src/index.ts";
 const template = "./public/index.html";
 const favicon = "./public/favicon.svg";
 
