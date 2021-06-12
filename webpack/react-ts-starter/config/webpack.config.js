@@ -10,10 +10,12 @@ const isProd = () => env("production");
 const ifProd = (t, f) => (isProd() ? t : f);
 
 // == paths ==
-const dist = path.resolve(__dirname, "..", "./dist");
-const context = path.resolve(__dirname, "..", "./src");
-const configFile = "../tsconfig.json";
-const main = process.env.MAIN_ENTRY || "./index.tsx";
+const context = path.resolve(__dirname, "..");
+const configFile = "tsconfig.json";
+const dist = path.resolve(__dirname, "./dist");
+const main = process.env.MAIN_ENTRY || "./src/index.tsx";
+const template = "./public/index.html";
+const favicon = "./public/favicon.ico";
 
 module.exports = {
   context,
@@ -53,10 +55,22 @@ module.exports = {
         // css-loader interprets @import and url() like import/require() and will resolve them
         use: ["style-loader", "css-loader"],
       },
+
+      // For images
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
+
+      // For fonts
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
+      },
     ],
   },
 
-  mode: "development",
+  mode: ifProd("production", "development"),
 
   plugins: [
     // Does the type checking since babel only compiles to Javscript.
@@ -68,10 +82,14 @@ module.exports = {
 
     // injects the bundle.js file
     new HtmlWebpackPlugin({
-      template: "index.html",
-      favicon: "favicon.ico",
+      template,
+      favicon,
     }),
   ],
 
   devtool: ifProd(undefined, "eval-cheap-module-source-map"),
+
+  devServer: {
+    historyApiFallback: true,
+  },
 };
