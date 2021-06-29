@@ -4,16 +4,38 @@
 #
 #    pip-compile requirements-base.in
 #
+alembic==1.6.5
+    # via -r requirements-base.in
 asgiref==3.3.4
     # via uvicorn
 click==8.0.1
     # via uvicorn
 fastapi==0.65.2
     # via -r requirements-base.in
+greenlet==1.1.0
+    # via sqlalchemy
 h11==0.12.0
     # via uvicorn
+mako==1.1.4
+    # via alembic
+markupsafe==2.0.1
+    # via mako
+psycopg2==2.9.1
+    # via -r requirements-base.in
 pydantic==1.8.2
     # via fastapi
+pyhumps==3.0.2
+    # via -r requirements-base.in
+python-dateutil==2.8.1
+    # via alembic
+python-editor==1.0.4
+    # via alembic
+six==1.16.0
+    # via python-dateutil
+sqlalchemy==1.4.19
+    # via
+    #   -r requirements-base.in
+    #   alembic
 starlette==0.14.2
     # via fastapi
 typing-extensions==3.10.0.0

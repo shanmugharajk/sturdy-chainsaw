@@ -1,2 +1,6 @@
+alembic
 fastapi
+pyhumps
+psycopg2
+sqlalchemy
 uvicorn

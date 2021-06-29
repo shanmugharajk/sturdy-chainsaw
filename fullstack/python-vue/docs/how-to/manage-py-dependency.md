@@ -21,3 +21,21 @@ Create a virtual environment Refer [venv](./create-venv.md). Then install using
 pip install -r requirements-dev.txt
 pip install -r requirements-base.txt
 ```
+
+We can create the following shell command to ease the work,
+
+```sh
+
+function install() {
+  if [[ "$1" == 'dev' ]]
+  then
+    echo "installing *.base.in"
+    pip-compile requirements-base.in
+    pip install -r requirements-base.txt
+  else
+  echo "installing *.dev.in"
+    pip-compile requirements-dev.in
+    pip install -r requirements-dev.txt
+  fi
+}
+```
